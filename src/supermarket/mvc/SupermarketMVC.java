@@ -4,6 +4,8 @@
  */
 package supermarket.mvc;
 
+import supermarket.mvc.view.CustomerView;
+
 /**
  *
  * @author user
@@ -15,7 +17,7 @@ public class SupermarketMVC {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        System.out.println("Hi");
+        new CustomerView().setVisible(true);
     }
     
 }
