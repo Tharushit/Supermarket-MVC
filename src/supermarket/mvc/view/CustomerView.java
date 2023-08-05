@@ -377,6 +377,7 @@ public class CustomerView extends javax.swing.JFrame {
 
     private void DeletejButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeletejButtonActionPerformed
         // TODO add your handling code here:
+        deleteCustomer();
     }//GEN-LAST:event_DeletejButtonActionPerformed
 
     private void SavejButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SavejButtonActionPerformed
@@ -531,6 +532,19 @@ public class CustomerView extends javax.swing.JFrame {
                     ZipCodeTextField.getText());
             
             String resp = customerController.updateCustomer(customer);
+            JOptionPane.showMessageDialog(this, resp);
+            clear();
+            loadAllCustomers();
+        } catch (SQLException ex) {
+            Logger.getLogger(CustomerView.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+        }
+    }
+    
+    private void deleteCustomer() {
+        try {
+            String custId = CustomerIDTextField.getText();
+            String resp = customerController.deleteCustomer(custId);
             JOptionPane.showMessageDialog(this, resp);
             clear();
             loadAllCustomers();
